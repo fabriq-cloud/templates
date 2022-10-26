@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}-{{workload}}
+  labels:
+    organization: {{organization}}
+    team: {{team}}
+    app: {{workload}}
+    deployment: {{deployment}}
+  {{#each labels as |kv|}}
+    {{kv.key}}: {{kv.value}}
+  {{/each}}
+data:
+{{#each config as |kv|}}
+  {{kv.key}}: {{kv.value}}
+{{/each}}

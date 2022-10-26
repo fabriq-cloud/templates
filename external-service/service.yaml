@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}-{{workload}}
+  labels:
+    organization: {{organization}}
+    team: {{team}}
+    workload: {{workload}}
+    deployment: {{deployment}}
+  {{#each labels as |kv|}}
+    {{kv.key}}: {{kv.value}}
+  {{/each}}
+spec:
+  selector:
+    app: {{workload}}
+  ports:
+    - protocol: TCP
+      port: {{port}}
+      targetPort: {{port}}
