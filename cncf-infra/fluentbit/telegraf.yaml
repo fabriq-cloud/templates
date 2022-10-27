@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: telegraf
-  namespace: fluentbit
+  namespace: {{organization}}-{{team}}
 spec:
   selector:
     matchLabels:
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: telegraf-config
-  namespace: fluentbit
+  namespace: {{organization}}-{{team}}
 data:
   telegraf.conf: |+
     # Telegraf Configuration
