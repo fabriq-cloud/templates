@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: fluentbit
-  namespace: {{organization}}-{{team}}
+  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
 spec:
   interval: 1m
   chart:
@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: fluent
-        namespace: {{organization}}-{{team}}
+        namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
   values:
     env: 
       - name: "LOG_ANALYTICS_WORKSPACE_ID"
