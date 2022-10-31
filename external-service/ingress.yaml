@@ -14,10 +14,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - {{workload}}-{{deployment}}.{{domain}}
+      - {{deployment}}.{{workload}}.{{domain}}
     secretName: {{tlsSecret}}
   rules:
-  - host: {{workload}}-{{deployment}}.{{domain}}
+  - host: {{deployment}}.{{workload}}.{{domain}}
     http:
       paths:
       - path: /
