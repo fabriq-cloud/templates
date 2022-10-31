@@ -12,10 +12,6 @@ metadata:
     {{kv.key}}: {{kv.value}}
   {{/each}}
 spec:
-  tls:
-  - hosts:
-      - {{deployment}}.{{workload}}.{{domain}}
-    secretName: {{tlsSecret}}
   rules:
   - host: {{deployment}}.{{workload}}.{{domain}}
     http:
