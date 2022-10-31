@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{workload}}-{{deployment}}
-  namespace: {{organization}}-{{team}}-{{workload}}
+  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
   labels:
     organization: {{organization}}
     team: {{team}}

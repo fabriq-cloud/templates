@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{workload}}-{{deployment}}
-  namespace: {{organization}}-{{team}}-{{workload}}
+  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
   labels:
     organization: {{organization}}
     team: {{team}}
