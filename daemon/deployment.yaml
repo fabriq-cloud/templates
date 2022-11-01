@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  labels:
+    organization: {{organization}}
+    team: {{team}}
+    workload: {{workload}}
+    deployment: {{deployment}}
+  {{#each labels as |kv|}}
+    {{kv.key}}: {{kv.value}}
+  {{/each}}
+spec:
+  replicas: {{replicas}}
+  selector:
+    matchLabels:
+      app: {{workload}}
+  template:
+    metadata:
+      labels:
+        organization: {{organization}}
+        team: {{team}}
+        app: {{workload}}
+        deployment: {{deployment}}
+      {{#each labels as |kv|}}
+        {{kv.key}}: {{kv.value}}
+      {{/each}}
+      annotations:
+        linkerd.io/inject: enabled
+        prometheus.io/scrape: "true"
+        prometheus.io/path: {{metricsEndpoint}}
+        prometheus.io/port: "{{port}}"       
+    spec:
+      containers:
+      - name: {{workload}}
+        image: {{image}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{port}}
+        resources:
+          limits:
+            cpu: {{cpu}}
+            memory: {{memory}}
+        envFrom:
+        - configMapRef:
+              name: {{workload}}-{{deployment}}
