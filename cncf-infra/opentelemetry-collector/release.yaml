@@ -17,7 +17,14 @@ spec:
     mode: deployment
     config: 
       exporters:
-        otlp:
-          endpoint: "api.honeycomb.io:443"
+        otlp/honeycomb:
+          endpoint: api.honeycomb.io:443
           headers:
             "x-honeycomb-team": "{{{honeycomb-api-key}}}"
+      service:
+        pipelines:
+          traces:
+            receivers: 
+              - otlp
+            exporters: 
+              - otlp/honeycomb
