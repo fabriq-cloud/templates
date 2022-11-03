@@ -21,6 +21,7 @@ spec:
           endpoint: api.honeycomb.io:443
           headers:
             "x-honeycomb-team": "{{{honeycomb-api-key}}}"
+            "x-honeycomb-dataset": "fabriq"
       service:
         pipelines:
           traces:
