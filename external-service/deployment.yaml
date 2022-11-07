@@ -42,6 +42,12 @@ spec:
           limits:
             cpu: {{cpu}}
             memory: {{memory}}
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: {{port}} 
+          initialDelaySeconds: 10
+          periodSeconds: 10
         envFrom:
         - configMapRef:
               name: {{workload}}-{{deployment}}
