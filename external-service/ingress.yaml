@@ -1,5 +1,5 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
 metadata:
   name: {{workload}}-{{deployment}}
   namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
@@ -12,14 +12,12 @@ metadata:
     {{kv.key}}: {{kv.value}}
   {{/each}}
 spec:
-  rules:
-  - host: {{deployment}}.{{workload}}.{{domain}}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{workload}}-{{deployment}}
-            port:
-              number: {{port}}
+  virtualhost:
+    fqdn: {{deployment}}.{{workload}}.{{domain}}
+  routes:
+  - conditions: 
+    - prefix: /
+    services:
+    - name: {{workload}}-{{deployment}}
+      port: 9000
+      protocol: h2c
