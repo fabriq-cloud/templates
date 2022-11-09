@@ -19,5 +19,5 @@ spec:
     - prefix: /
     services:
     - name: {{workload}}-{{deployment}}
-      port: 9000
+      port: {{port}}
       protocol: h2c
