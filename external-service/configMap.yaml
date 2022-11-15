@@ -13,6 +13,5 @@ metadata:
   {{/each}}
 data:
 {{#each config as |kv|}}
-  {{kv.key}}: >
-    {{{kv.value}}}
+  {{kv.key}}: "{{{kv.value}}}"
 {{/each}}
