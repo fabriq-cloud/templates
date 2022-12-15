@@ -20,4 +20,3 @@ spec:
     services:
     - name: {{workload}}-{{deployment}}
       port: {{port}}
-      protocol: h2c
