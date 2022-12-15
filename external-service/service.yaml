@@ -17,4 +17,4 @@ spec:
   ports:
     - protocol: TCP
       port: {{port}}
-      targetPort: {{port}}
+      targetPort: {{containerPort}}

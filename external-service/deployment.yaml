@@ -30,14 +30,14 @@ spec:
         linkerd.io/inject: enabled
         prometheus.io/scrape: "true"
         prometheus.io/path: {{metricsEndpoint}}
-        prometheus.io/port: "{{port}}"       
+        prometheus.io/port: "{{containerPort}}"
     spec:
       containers:
       - name: {{workload}}
         image: {{image}}
         imagePullPolicy: Always
         ports:
-        - containerPort: {{port}}
+        - containerPort: {{containerPort}}
         resources:
           limits:
             cpu: {{cpu}}
@@ -45,7 +45,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /health
-            port: {{port}} 
+            port: {{containerPort}} 
           initialDelaySeconds: 10
           periodSeconds: 10
         envFrom:
