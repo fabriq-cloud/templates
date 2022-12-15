@@ -20,3 +20,4 @@ spec:
     services:
     - name: {{workload}}-{{deployment}}
       port: {{port}}
+      protocol: {{protocol}}
