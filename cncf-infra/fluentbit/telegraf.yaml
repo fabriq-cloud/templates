@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: telegraf
-  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}
 spec:
   selector:
     matchLabels:
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: telegraf-config
-  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}
 data:
   telegraf.conf: |+
     # Telegraf Configuration

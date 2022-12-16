@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: bitnami
-  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}
 spec:
   url: https://charts.bitnami.com/bitnami
   interval: 10m
