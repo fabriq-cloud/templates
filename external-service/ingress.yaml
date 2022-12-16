@@ -2,7 +2,7 @@ apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
   name: {{workload}}-{{deployment}}
-  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}
   labels:
     organization: {{organization}}
     team: {{team}}

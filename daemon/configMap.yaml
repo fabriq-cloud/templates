@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{workload}}-{{deployment}}
-  namespace: {{organization}}-{{team}}-{{workload}}-{{deployment}}
+  namespace: {{organization}}-{{team}}
   labels:
     organization: {{organization}}
     team: {{team}}
