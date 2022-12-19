@@ -8,23 +8,26 @@ spec:
   chart:
     spec:
       chart: opentelemetry-collector
-      version: "0.38.0"
+      version: "0.43.2"
       sourceRef:
         kind: HelmRepository
         name: open-telemetry
         namespace: {{organization}}-{{team}}
     mode: deployment
-    config: 
+    config:
       exporters:
-        otlp/honeycomb:
-          endpoint: api.honeycomb.io:443
-          headers:
-            "x-honeycomb-team": "{{{honeycomb-api-key}}}"
-            "x-honeycomb-dataset": "fabriq"
+        receivers:
+          otlp:
+            protocols:
+              grpc:
+        logging:
+          loglevel: info
+        jaeger:
+          endpoint: jaeger.{{organization}}-{{team}}.svc:14250
       service:
         pipelines:
           traces:
-            receivers: 
-              - otlp
-            exporters: 
-              - otlp/honeycomb
+            receivers: [otlp]
+            processors: []
+            exporters: [jaeger, logging]
+
