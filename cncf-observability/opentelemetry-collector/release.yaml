@@ -13,21 +13,22 @@ spec:
         kind: HelmRepository
         name: open-telemetry
         namespace: {{organization}}-{{team}}
-    mode: deployment
-    config:
-      exporters:
-        receivers:
-          otlp:
-            protocols:
-              grpc:
-        logging:
-          loglevel: info
-        jaeger:
-          endpoint: jaeger.{{organization}}-{{team}}.svc:14250
-      service:
-        pipelines:
-          traces:
-            receivers: [otlp]
-            processors: []
-            exporters: [jaeger, logging]
+    values:
+      mode: deployment
+      config:
+        exporters:
+          receivers:
+            otlp:
+              protocols:
+                grpc:
+          logging:
+            loglevel: info
+          jaeger:
+            endpoint: jaeger.{{organization}}-{{team}}.svc:14250
+        service:
+          pipelines:
+            traces:
+              receivers: [otlp]
+              processors: []
+              exporters: [jaeger, logging]
 
