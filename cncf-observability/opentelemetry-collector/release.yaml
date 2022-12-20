@@ -20,13 +20,14 @@ spec:
         otlp:
           protocols:
             grpc:
+            http:
       exporters:
         logging:
           loglevel: info
-        jaeger:
-          endpoint: jaeger.{{organization}}-{{team}}.svc:14250
-          tls:
-            insecure: true
+        oltp/ls:
+          endpoint: ingest.lightstep.com:443
+          headers:
+            "lightstep-access-token": "{{lightstep-access-token}}"
       service:
         pipelines:
           traces:
