@@ -16,3 +16,9 @@ spec:
   values:
     allInOne:
       enabled: true
+    agent:
+      enabled: false
+    collector:
+      enabled: false
+    provisionDataStore:
+      cassandra: false
