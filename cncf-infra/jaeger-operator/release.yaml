@@ -13,3 +13,8 @@ spec:
         kind: HelmRepository
         name: jaegertracing
         namespace: {{organization}}-{{team}}
+  values:
+    certs:
+      certificate:
+        namespace: {{organization}}-{{team}}
+
