@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: jaegertracing
+  name: jaeger-all-in-one
   namespace: {{organization}}-{{team}}
 spec:
-  url: https://jaegertracing.github.io/helm-charts
+  url: https://raw.githubusercontent.com/hansehe/jaeger-all-in-one/master/helm/charts
   interval: 10m
