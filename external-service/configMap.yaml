@@ -12,6 +12,7 @@ metadata:
     {{kv.key}}: "{{{kv.value}}}"
   {{/each}}
 data:
+  SERVICE_VERSION: "{{deployment}}:{{version}}"
 {{#each config as |kv|}}
   {{kv.key}}: "{{{kv.value}}}"
 {{/each}}
