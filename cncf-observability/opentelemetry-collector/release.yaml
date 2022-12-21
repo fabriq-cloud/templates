@@ -16,15 +16,8 @@ spec:
   values:
     mode: deployment
     config:
-      receivers:
-        otlp:
-          protocols:
-            grpc:
-            http:
       exporters:
-        logging:
-          loglevel: info
-        oltp/ls:
+        otlp:
           endpoint: ingest.lightstep.com:443
           headers:
             "lightstep-access-token": "{{lightstep-access-token}}"
@@ -33,5 +26,5 @@ spec:
           traces:
             receivers: [otlp]
             processors: []
-            exporters: [jaeger, logging]
+            exporters: [otlp]
 
